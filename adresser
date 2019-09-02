@@ -9,6 +9,7 @@ adresser() {
   printf "3) Remove record\n"
   printf "0) Exit\n"
 
+  create_file
   read -r input_number
    if [[ $input_number == "1" ]]; then
       printf "Input name of the record:\n"
@@ -37,6 +38,13 @@ adresser() {
    if [[ $input_number == "0" ]]; then
       exit
    fi
+}
+
+create_file() {
+  if [[ ! -f $ADRESS_BOOK ]]; then
+    touch $ADRESS_BOOK
+    printf "ID    NAME    NUMBER\n" > $ADRESS_BOOK
+  fi
 }
 
 ## add record
