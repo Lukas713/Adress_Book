@@ -55,9 +55,9 @@ add_record() {
     fi
     id=$(cat $ADRESS_BOOK | wc -l)
     n=$(grep -w $id. $ADRESS_BOOK)
-    while [[ $n != "0" && $n != '' ]]; do
-      id=$((id+1))
-      n=$(grep $id $ADRESS_BOOK)
+    while [[ $n != '' ]]; do
+      id=$(( id++ ))
+      n=$(n)
     done
     printf "$id.    $1    $2\n" >> $ADRESS_BOOK
 }
